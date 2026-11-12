@@ -60,3 +60,19 @@ Jag har ritat ER-diagrammet i Lucidchart. Bilden ligger i repot: `er-diagram.png
 
 Det finns tre tabeller: Customers, Consultants och Assignments. En kund kan ha flera uppdrag, och en konsult kan ha flera uppdrag. Därför finns Assignments i mitten och kopplar ihop dem.
 
+
+
+\## 3. Normalisering
+
+
+
+\*\*1NF:\*\* Varje kolumn innehåller ett enda värde per rad, och varje tabell har en primärnyckel (Id). Det finns inga listor eller upprepade kolumner.
+
+
+
+\*\*2NF:\*\* Alla tabeller har en enkel primärnyckel, så ingen kolumn kan bero på bara en del av nyckeln. Därför har Assignments ett eget Id i stället för en sammansatt nyckel.
+
+
+
+\*\*3NF:\*\* Kolumnerna beskriver bara sin egen tabell. Kundens uppgifter finns bara i Customers och konsultens uppgifter bara i Consultants. Assignments har bara kund-id och konsult-id, inte namn eller timpris. Då ändrar man varje uppgift på ett enda ställe.
+
