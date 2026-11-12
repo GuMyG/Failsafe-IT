@@ -38,9 +38,25 @@ Relationer:
 
 \- En konsult kan ha många uppdrag (1:M).
 
-\- Ett uppdrag kopplar ihop en kund med en konsult, så mellan kunder och konsulter finns i grunden en M:M-relation. Den löses upp med kopplingstabellen Assignments.
+\- Ett uppdrag kopplar ihop en kund med en konsult. Därför behövs tabellen Assignments i mitten.
 
 
 
-Specialiteten är konsultens \*huvudsakliga\* specialitet och lagras därför som en kolumn i Consultants.S
+Specialiteten är konsultens \*huvudsakliga\* specialitet och lagras därför som en kolumn i Consultants.
+
+
+
+\## 2. ER-diagram
+
+
+
+Jag har ritat ER-diagrammet i Lucidchart. Bilden ligger i repot: `er-diagram.png`.
+
+
+
+!\[ER-diagram](er-diagram.png)
+
+
+
+Det finns tre tabeller: Customers, Consultants och Assignments. En kund kan ha flera uppdrag, och en konsult kan ha flera uppdrag. Därför finns Assignments i mitten och kopplar ihop dem.
 
