@@ -71,3 +71,36 @@ SELECT * FROM Customers;
 SELECT * FROM Consultants;
 SELECT * FROM Assignments;
 GO
+
+-- A
+SELECT FullName, HourlyRate
+FROM Consultants
+WHERE HourlyRate > 1200
+ORDER BY HourlyRate DESC;
+
+-- B
+SELECT cu.CompanyName, co.FullName AS ConsultantName, a.StartDate, a.EndDate
+FROM Assignments a
+INNER JOIN Customers cu   ON a.CustomerId = cu.Id
+INNER JOIN Consultants co ON a.ConsultantId = co.Id;
+
+-- C: LEFT JOIN keeps customers without assignments, COUNT(a.Id) gives them 0
+SELECT cu.CompanyName, COUNT(a.Id) AS NumberOfAssignments
+FROM Customers cu
+LEFT JOIN Assignments a ON cu.Id = a.CustomerId
+GROUP BY cu.Id, cu.CompanyName;
+
+-- D
+UPDATE Consultants
+SET HourlyRate = 1350.00
+WHERE Id = 2;
+
+SELECT FullName, HourlyRate FROM Consultants WHERE Id = 2;
+
+-- E: customer 4 has no assignments. A customer that has assignments
+-- can not be deleted, because the foreign key blocks it.
+DELETE FROM Customers
+WHERE Id = 4;
+
+SELECT * FROM Customers;
+GO
